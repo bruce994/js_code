@@ -1,0 +1,74 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>JS图片向上滚动</title>
+    <style type="text/css">
+	img{
+	border: none;
+	}
+	</style>
+    <!-- 这句话不能少，记得把jquery.js文件放在当前页面的同一目录中 -->
+    <script type="text/javascript" src="jquery.js"></script>
+</head>
+<body>
+<div id="demo" style="overflow:hidden;height:300px;">
+  <table border=0 align=center cellpadding=1 cellspacing=1 cellspace=0 >
+    <tr id="demo1">
+      <td valign="top" bgcolor="ffffff">
+      <!-- 特别注意，下面的图片总高度必须大于上面定义的demo的宽度，如上面demo的高度为300px,则下面所有图片的高的和值必须大于300,否则会出现些问题！ -->
+      	<table border="0" cellspacing="0" cellpadding="0">
+          <tr align="center">
+            <td><a href="#" target="_blank"><img src="01.jpg" width="150" height="100"></a></td>            
+          </tr>
+          <tr align="center">
+          	<td><a href="#" target="_blank"><img src="02.jpg" width="150" height="100"></a></td>
+          </tr>
+          <tr align="center">
+          	<td><a href="#" target="_blank"><img src="03.jpg" width="150" height="100"></a></td>
+          </tr>
+          <tr align="center">
+          	<td><a href="#" target="_blank"><img src="04.jpg" width="150" height="100"></a></td>
+          </tr>
+          <tr align="center">
+          	<td><a href="#" target="_blank"><img src="05.jpg" width="150" height="100"></a></td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+    <tr id="demo2">
+    </tr>
+  </table>
+</div>
+<script type="text/javascript"> 
+var speed=30;
+var demo = $("#demo");
+var demo1 = $("#demo1");
+var demo2 = $("#demo2");
+demo2.html(demo1.html());
+function Marquee(){ 
+	if(demo.scrollTop()==0)
+		demo.scrollTop(demo1.height()); 
+	else{
+		demo.scrollTop(demo.scrollTop()-1);
+	}
+} 
+var MyMar=setInterval(Marquee,speed) 
+demo.mouseover(function() {
+	clearInterval(MyMar);
+} )
+demo.mouseout(function() {
+	MyMar=setInterval(Marquee,speed);
+} )
+
+function fun1(){
+	alert(demo.scrollTop());
+}
+function fun2(){
+	alert(demo1.height());
+}
+</script>
+<input type="button"  value="显示demo.scrollTop()" onclick="fun1();"/>
+<input type="button"  value="显示demo1.height())" onclick="fun2();"/>
+</body>
+</html>

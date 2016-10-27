@@ -1,0 +1,7 @@
+javascript控制图片无缝滚动
+
+兼容ie6,7,8,opera,chrome,firefox
+
+一些要注意的地方都已经写在HTML文件的注释中。
+make by 牛腩
+email: 164423073@qq.com
